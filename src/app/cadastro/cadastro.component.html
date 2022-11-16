@@ -1,0 +1,101 @@
+<p-toast></p-toast>
+<div class="fundo_titulo">
+    <div class="titulo">Cadastro</div>
+</div>
+<form #form="ngForm" (ngSubmit)="salvar(form)">
+    <div class="conteudo grid">
+        <div class="col-12">
+            <div class="label">Nome</div>
+            <input type="text" required placeholder="Digite seu nome" [(ngModel)]="cliente.nome" name="nome" pInputText>
+        </div>
+        <div class="col-12">
+            <div class="label">E-mail</div>
+            <input type="text" required placeholder="Digite seu melhor e-mail" [(ngModel)]="cliente.email" name="email"
+                pInputText>
+        </div>
+        <div class="col-12">
+            <div class="label">CPF</div>
+            <p-inputMask [required]="true" placeholder="Digite CPF aqui" mask="999.999.999-99" [(ngModel)]="cliente.cpf"
+                name="cpf"></p-inputMask>
+        </div>
+        <div class="col-6">
+            <div class="label">Endereço</div>
+            <input type="text" required placeholder="Digite endereço" [(ngModel)]="cliente.endereco" name="endereco"
+                pInputText>
+        </div>
+        <div class="col-6">
+            <div class="label">Estado</div>
+            <p-dropdown [autoDisplayFirst]="false" [filter]="true" placeholder="Selecione o Estado" filterBy="nome"
+                (onChange)="atualizarCidades($event)" [options]="estados" optionLabel="nome" optionValue="id"
+                [(ngModel)]="estadoSelecionado" name="estado"></p-dropdown>
+        </div>
+        <div class="col-6">
+            <div class="label">CEP</div>
+            <p-inputMask [required]="true" placeholder="00.000-000" mask="99.999-999" [(ngModel)]="cliente.cep"
+                name="cep"></p-inputMask>
+        </div>
+        <div class="col-6">
+            <div class="label">Cidade</div>
+            <p-dropdown [autoDisplayFirst]="false" [filter]="true" placeholder="Selecione a Cidade" filterBy="nome"
+                optionValue="id" [options]="municipios" optionLabel="nome" [(ngModel)]="cidadeSelecionada" name="cidade"
+                [required]="true">
+            </p-dropdown>
+        </div>
+        <div class="col-12 formaPagamento">Forma de Pagamento</div>
+        <div class="barra"></div>
+        <div class="col-6">
+            <p-radioButton #cartao [required]="true" name="metodoPagamento" value="2" inputId="cartao"
+                [(ngModel)]="cliente.formaPagamento"></p-radioButton>
+            <label class="label" for="cartao">Cartão de Crédito</label>
+        </div>
+        <div class="col-6">
+            <p-radioButton #boleto [required]="true" name="metodoPagamento" value="1" inputId="boleto"
+                [(ngModel)]="cliente.formaPagamento"></p-radioButton>
+            <label class="label" for="boleto">Boleto</label>
+        </div>
+        <ng-template [ngIf]="cliente.formaPagamento == 1">
+            <div class="col-12 label" style="margin-top: 2em;">Seu boleto será enviado por e-mail.</div>
+            <div class="barra"></div>
+        </ng-template>
+        <ng-template [ngIf]="cliente.formaPagamento == 2">
+            <div class="col-6" style="padding-top: 1em;">
+                <div class="label">Nome do cartão</div>
+                <input type="text" required placeholder="Digite o nome impresso no cartão"
+                    [(ngModel)]="cliente.cartaoNome" name="cartaoNome" pInputText>
+            </div>
+            <div class="col-3" style="padding-top: 1em;">
+                <div class="label">Data de Expiração</div>
+                <p-dropdown [required]="true" [autoDisplayFirst]="false" placeholder="Mês"
+                    [(ngModel)]="cliente.cartaoMes" [options]="mesCartao" optionValue="mes" optionLabel="mes">
+                </p-dropdown>
+            </div>
+            <div class="col-3" style="padding-top: 1em;">
+                <div class="label"> </div>
+                <p-dropdown [required]="true" [autoDisplayFirst]="false" placeholder="Ano"
+                    [(ngModel)]="cliente.cartaoAno" [options]="anoCartao" optionValue="ano" optionLabel="ano">
+                </p-dropdown>
+            </div>
+            <div class="col-6">
+                <div class="label">Número do Cartão</div>
+                <p-inputMask [required]="true" placeholder="0000 0000 0000 0000" mask="9999 9999 9999 9999"
+                    [(ngModel)]="cliente.cartaoNumero" name="cartaoNumero"></p-inputMask>
+            </div>
+            <div class="col-6">
+                <div class="label">Código de Segurança</div>
+                <p-inputMask [required]="true" placeholder="XXX" mask="999" [(ngModel)]="cliente.cartaoCodSeguranca"
+                    name="cartaoCod"></p-inputMask>
+            </div>
+            <div class="barra"></div>
+            <div class="col-12 label">Seu cartão será debitado em R$ 49,00</div>
+        </ng-template>
+
+        <div class="col-12">
+            <button pButton type="submit" label="REALIZAR MATRÍCULA"></button>
+        </div>
+        <div class="col-12">Informações seguras e criptografadas</div>
+        <div class="barra"></div>
+    </div>
+</form>
+<footer>
+    <div class="meuNome">Gabriel Maciel - 2022</div>
+</footer>

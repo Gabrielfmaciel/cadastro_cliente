@@ -1,0 +1,54 @@
+<p-toast></p-toast>
+<div class="fundo_titulo">
+    <div class="titulo">Lista</div>
+</div>
+<div class="conteudo grid">
+    <div class="lista_cliente col-12">Lista Cliente</div>
+    <div class="barra"></div>
+    <div class="col-12 grid">
+        <div class="col-12 labelFiltro">Nome do cliente</div>
+        <span class="col-12">
+            <input class="filtrar" pInputText type="text"
+                (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Digite seu nome" />
+        </span>
+        <div class="col-12">
+            <p-table #dt [value]="clientes!" dataKey="cpf" styleClass="p-datatable-gridlines"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [globalFilterFields]="['nome','email','cpf','dataCadastro']">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>CPF</th>
+                        <th>Criado em</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-cliente>
+                    <tr>
+                        <td>{{cliente.nome}}</td>
+                        <td>{{cliente.email}}</td>
+                        <td>{{cliente.cpf}}</td>
+                        <td>{{cliente.dataCadastro | date:'dd/MM/yyyy'}}</td>
+                        <td style="padding-left: 3em; width: 80px;">
+                            <p-button (onClick)="abrirDetalheCliente(cliente)" class="btnEditar" icon="pi pi-pencil">
+                            </p-button>
+                            <p-button (onClick)="excluirSelecionado(cliente)" class="btnApagar" icon="pi pi-trash">
+                            </p-button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <tr>
+                        <td>Exemplo de nome</td>
+                        <td>exemplo@mail.com</td>
+                        <td>000.000.000-00</td>
+                        <td>00/00/000</td>
+                        <td style="opacity: 1;">
+                            <p-button (onClick)="novoCadastro()" class="novoCadastro" icon="pi pi-plus"></p-button>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

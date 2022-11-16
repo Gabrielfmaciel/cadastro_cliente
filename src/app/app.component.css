@@ -1,0 +1,105 @@
+header {
+    height: 69px;
+    background: #0A0A3C;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+
+}
+
+.logo {
+    background: url(../assets/LogoRhitmo1.png);
+    position: absolute;
+    left: 32px;
+    right: 0%;
+    top: 22px;
+    bottom: 0%;
+    width: 25px;
+    height: 25px;
+}
+
+.lista {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: right;
+    color: #FFFFFF;
+    order: 0;
+    flex-grow: 0;
+    float: left;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.separador {
+    box-sizing: border-box;
+    width: 10px;
+    height: 10px;
+    border: 2px solid #FFFFFF;
+    order: 1;
+    flex-grow: 0;
+    border-radius: 50%;
+    float: left;
+    margin-left: 32px;
+    margin-right: 32px;
+    margin-top: 4px;
+}
+
+.cadastro {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: right;
+    color: #FFFFFF;
+    order: 2;
+    flex-grow: 0;
+    float: left;
+    width: fit-content;
+    cursor: pointer;
+
+}
+
+.paginas {
+    width: fit-content;
+    float: right;
+    margin-right: 33px;
+    margin-top: 25.5px;
+}
+
+footer {
+    height: 137px;
+    position: static;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #0A0A3C;
+}
+
+:host ::ng-deep .p-datatable table {
+    box-sizing: border-box;
+    position: absolute;
+    /* width: 228px;
+    height: 46px;
+    left: 265px; */
+    top: 53px;
+    border: 1px solid #77A7D4;
+}
+
+.meuNome {
+    position: absolute;
+    height: 34px;
+    left: 32px;
+    margin-top: 59px;
+    font-family: 'Koh Santepheap';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 18px;
+    color: #FFFFFF;
+}
